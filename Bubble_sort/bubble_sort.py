@@ -1,6 +1,5 @@
 class Bubble_sort:
     def sort(self, arr):
-        swap = False
         # outer loop for itrating over the array and hold each of them
         for i in range(len(arr)-1): 
             # Inner loop for itrating over the array and comparing each of them with arr[j] and arr[j+1]

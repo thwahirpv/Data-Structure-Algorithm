@@ -1,3 +1,5 @@
+import random
+
 class Quick_sort:
     def pivot_place_first(self, arr, first, last):
         pivot = arr[first]
@@ -33,9 +35,29 @@ class Quick_sort:
         arr[last], arr[left] = arr[left], arr[last]
         return left
 
+    def pivot_place_random(self, arr, first, last):
+        r_index = random.randint(first, last)
+        # We assign the r_index last or first here i am assign last
+        arr[r_index], arr[last] = arr[last], arr[r_index]
+        pivot = arr[last]
+        left = first
+        right = last - 1
+        while True:
+            while left<=right and arr[left] <= pivot:
+                left = left + 1
+            while left<=right and arr[right] >= pivot:
+                right = right - 1
+            if left > right:
+                break
+            else:
+                arr[left], arr[right] = arr[right], arr[left]
+        arr[last], arr[left] = arr[left], arr[last]
+        return left
+
+
     def quick_sort(self, arr, first, last):
         if first<last:
-            p_index = self.pivot_place_last(arr, first, last)
+            p_index = self.pivot_place_random(arr, first, last)
             self.quick_sort(arr, first, p_index-1)
             self.quick_sort(arr, p_index+1, last)
         return arr

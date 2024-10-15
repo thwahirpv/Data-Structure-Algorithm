@@ -60,7 +60,7 @@ class Quick_sort:
         heigh = arr[last]
         pivot = statistics.median([low, arr[mid], heigh])
         p_index = len(arr) - 1
-
+    
         if pivot == low:
             p_index = first
         elif pivot == arr[mid]:

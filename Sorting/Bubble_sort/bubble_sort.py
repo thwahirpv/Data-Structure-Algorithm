@@ -13,7 +13,7 @@ class Bubble_sort:
                 # print(arr)
             # using this condition we can reduse the useless itration.
             if swap is False:
-                return arr
+                break
             # print()
         return arr
     

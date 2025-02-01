@@ -134,7 +134,7 @@ class BST:
             self.leftchld.post_order()
         if self.rightchld:
             self.rightchld.post_order()
-        print(self.data)
+        print(self.data, end=' ')
     
     def min_node(self):
         if self.data is None:
@@ -195,10 +195,11 @@ root = BST()
 arr = [50,40,45,30,23,25,45,80,70,60,58,90,94,98,100]
 for data in arr:
     root.insert(data)
+
 root.inorder_traverse()
-
 print()
-root.max_node()
+root.post_order()
+print()
+root.preorder_traverse()
 
-demo = root.is_binary(root)
-print(demo)
+

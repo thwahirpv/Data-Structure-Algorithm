@@ -1,6 +1,6 @@
 class MinHeap:
     def __init__(self, limit):
-        self.heap_list = [0] * limit
+        self.heap_list = [None] * limit
         self.limit = limit
         self.size = 0
     
@@ -38,7 +38,7 @@ class MinHeap:
         self.heap_list[parentIndex], self.heap_list[childIndex] = self.heap_list[childIndex], self.heap_list[parentIndex]
 
     def heapifyUp(self):
-        index = self.size  - 1
+        index = self.size - 1
         while self.hasParent(index) and self.parent(index) > self.heap_list[index]:
             self.swap(self.getParentIndex(index), index)
             index = self.getParentIndex(index)
@@ -69,17 +69,23 @@ class MinHeap:
         if self.size == 0:
             raise('Heap is empty!')
         data = self.heap_list[0]
-        self.heap_list[0] = self.heap_list[self.size-1] 
-        self.heap_list[self.size-1] = 0
+        self.heap_list[0] = self.heap_list[self.size-1]
         self.size -= 1
         self.heapifyDown()
         return data
     
-    def display(self):
+    def heapSort(self):
         index = 0
         while index < self.size:
+            self.heap_list[self.size] = self.removeMin()
+        return
+    
+    def display(self):
+        index = 0
+        while self.heap_list[index]:
             print(self.heap_list[index], end=' ')
             index += 1
+    
         
 
 mh = MinHeap(20)
@@ -88,8 +94,9 @@ for i in list:
     mh.insert(i)
 mh.display()
 print()
-mh.removeMin()
-print(mh.leftChild(3), mh.rightChild(3))
+
+
+mh.heapSort()
 mh.display()
         
 
